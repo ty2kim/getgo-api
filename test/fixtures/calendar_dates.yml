@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_id: MyString
+  date: MyString
+  exception_type: MyString
+
+two:
+  service_id: MyString
+  date: MyString
+  exception_type: MyString

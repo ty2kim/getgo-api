@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  agency_id: MyString
+  agency_id: 
   name: MyString
   url: MyString
   timezone: MyString
@@ -10,7 +10,7 @@ one:
   fare_url: MyString
 
 two:
-  agency_id: MyString
+  agency_id: 
   name: MyString
   url: MyString
   timezone: MyString

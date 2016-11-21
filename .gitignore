@@ -7,9 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+# Ignore the default PostgresSQL database.
+/getgo_development
+/getgo_test
+/getgo_production
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -19,3 +20,13 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore GO transit GTFS feeds
+/lib/seeds/*
+
+# Ignore DB credentails
+/config/database.yml
+# /config/secrets.yml
+
+# Ignore dotenv
+.env

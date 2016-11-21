@@ -10,53 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118214209) do
+ActiveRecord::Schema.define(version: 20161121032458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "agencies", force: :cascade do |t|
-    t.string   "agency_id"
-    t.string   "name"
-    t.string   "url"
-    t.string   "timezone"
-    t.string   "lang"
-    t.string   "phone"
-    t.string   "fare_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "agencies", id: :string, force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.string "timezone"
+    t.string "lang"
+    t.string "phone"
+    t.string "fare_url"
   end
 
-  create_table "routes", force: :cascade do |t|
-    t.string   "route_id"
-    t.integer  "agency_id"
-    t.string   "short_name"
-    t.string   "long_name"
-    t.string   "route_type"
-    t.string   "color"
-    t.string   "text_color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["agency_id"], name: "index_routes_on_agency_id", using: :btree
+  create_table "calendar_dates", force: :cascade do |t|
+    t.string "service_id"
+    t.string "date"
+    t.string "exception_type"
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.integer  "route_id"
-    t.string   "service_id"
-    t.string   "trip_id"
-    t.string   "headsign"
-    t.string   "short_name"
-    t.string   "direction_id"
-    t.string   "block_id"
-    t.string   "shape_id"
-    t.string   "wheelchair_accessible"
-    t.string   "bikes_allowed"
-    t.string   "route_variant"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.index ["route_id"], name: "index_trips_on_route_id", using: :btree
+  create_table "routes", id: :string, force: :cascade do |t|
+    t.string "agency_id"
+    t.string "short_name"
+    t.string "long_name"
+    t.string "route_type"
+    t.string "color"
+    t.string "text_color"
   end
 
-  add_foreign_key "routes", "agencies"
-  add_foreign_key "trips", "routes"
+  create_table "stop_times", force: :cascade do |t|
+    t.string  "trip_id"
+    t.string  "arrival_time"
+    t.string  "departure_time"
+    t.string  "stop_id"
+    t.integer "stop_sequence"
+    t.integer "pickup_type"
+    t.integer "drop_off_type"
+  end
+
+  create_table "stops", id: :string, force: :cascade do |t|
+    t.string  "name"
+    t.string  "lat"
+    t.string  "lon"
+    t.string  "zone_id"
+    t.string  "url"
+    t.integer "location_type"
+    t.string  "parent_station"
+    t.integer "wheelchair_boarding"
+  end
+
+  create_table "trips", id: :string, force: :cascade do |t|
+    t.string  "route_id"
+    t.string  "service_id"
+    t.string  "headsign"
+    t.string  "short_name"
+    t.string  "direction_id"
+    t.string  "block_id"
+    t.string  "shape_id"
+    t.integer "wheelchair_accessible"
+    t.integer "bikes_allowed"
+    t.string  "route_variant"
+  end
+
+  add_foreign_key "routes", "agencies", name: "routes_agency_id_fkey"
+  add_foreign_key "stop_times", "stops", name: "stop_times_stop_id_fkey"
+  add_foreign_key "stop_times", "trips", name: "stop_times_trip_id_fkey"
+  add_foreign_key "trips", "routes", name: "trips_route_id_fkey"
 end
