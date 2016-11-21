@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  route: one
+  service_id: MyString
+  trip_id: MyString
+  headsign: MyString
+  short_name: MyString
+  direction_id: MyString
+  block_id: MyString
+  shape_id: MyString
+  wheelchair_accessible: MyString
+  bikes_allowed: MyString
+  route_variant: MyString
+
+two:
+  route: two
+  service_id: MyString
+  trip_id: MyString
+  headsign: MyString
+  short_name: MyString
+  direction_id: MyString
+  block_id: MyString
+  shape_id: MyString
+  wheelchair_accessible: MyString
+  bikes_allowed: MyString
+  route_variant: MyString
