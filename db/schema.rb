@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 20161121032458) do
   end
 
   create_table "routes", id: :string, force: :cascade do |t|
-    t.string "agency_id"
-    t.string "short_name"
-    t.string "long_name"
-    t.string "route_type"
-    t.string "color"
-    t.string "text_color"
+    t.string  "agency_id"
+    t.string  "short_name"
+    t.string  "long_name"
+    t.integer "route_type"
+    t.string  "color"
+    t.string  "text_color"
   end
 
   create_table "stop_times", force: :cascade do |t|

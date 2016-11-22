@@ -9,3 +9,7 @@ class CalendarDatesController < ApplicationController
     render json: @calendar_date
   end
 end
+
+# parsing the input
+# call the business logic
+# formatting output

@@ -30,3 +30,6 @@
 
 # Ignore dotenv
 .env
+
+# Ignore dump file
+/getgo_development.dump

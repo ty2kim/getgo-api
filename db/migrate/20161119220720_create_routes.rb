@@ -5,7 +5,7 @@ class CreateRoutes < ActiveRecord::Migration[5.0]
       t.string :agency_id
       t.string :short_name
       t.string :long_name
-      t.string :route_type
+      t.integer :route_type
       t.string :color
       t.string :text_color
     end
