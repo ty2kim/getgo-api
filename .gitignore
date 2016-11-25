@@ -32,4 +32,4 @@
 .env
 
 # Ignore dump file
-/getgo_development.dump
+getgo_development.dump
