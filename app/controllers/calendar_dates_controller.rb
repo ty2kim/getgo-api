@@ -1,3 +1,4 @@
+# class CalendarDatesController
 class CalendarDatesController < ApplicationController
   def index
     @calendar_dates = CalendarDate.all
@@ -9,7 +10,3 @@ class CalendarDatesController < ApplicationController
     render json: @calendar_date
   end
 end
-
-# parsing the input
-# call the business logic
-# formatting output

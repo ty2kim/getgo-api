@@ -1,16 +1,10 @@
+# class StopTimesController
 class StopTimesController < ApplicationController
   before_action :set_parent
   def index
-    # @stop_times = StopTime.all
-    # render json: @stop_times
     @stop_times = @parent.stop_times
     render json: @stop_times, root: 'stop_times', adapter: :json
   end
-
-  # def show
-  #   @stop_time = StopTime.find params[:id]
-  #   render json: @stop_time
-  # end
 
   private
 

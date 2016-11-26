@@ -1,39 +1,28 @@
 # class StopsController
 class StopsController < ApplicationController
-  # before_action :set_trip
+  before_action :set_stops
 
   def index
-    # @stops = Stop.all
-    if params[:trip_id]
-      @stops = Trip.find_by(id: params[:trip_id]).stops
-    else
-      @stops = Stop.all
-      @service_ids = CalendarDate.service_id_for_date(params[:date]) if params[:date]
-      # unless @service_ids.blank?
-      #   @stops = @stops
-      #   .joins(:trips)
-      #   .where('trips.service_id' => @service_ids)
-      #   .distinct
-      # end
-    end
-
-    # @stops.where("'id NOT LIKE '%-parent'")
     render json: @stops, root: 'stops', adapter: :json, each_serializer: StopSerializer
   end
 
   def show
     @stop = Stop.find params[:id]
-    # render json: @stop, root: 'stop', adapter: :json, include_trips: true
     render json: @stop, root: 'stop', adapter: :json, include_trips: true, include_stop_times: true
   end
 
-  # private
+  private
 
-  # def set_route
-  #   @route = Route.find_by(id: params[:route_id])
-  # end
-
-  # def set_trip
-  #   @trip = Trip.preload(:stops).find_by(id: params[:trip_id])
-  # end
+  def set_stops
+    @stops = if params[:trip_id]
+               Trip.find(params[:trip_id]).stops
+             else
+               @service_ids = CalendarDate.service_ids_for_date(params[:date]) if params[:date]
+               if @service_ids.blank?
+                 Stop.all
+               else
+                 Stop.joins(:trips).where('trips.service_id' => @service_ids).distinct
+               end
+             end
+  end
 end

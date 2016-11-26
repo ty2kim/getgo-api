@@ -7,10 +7,6 @@ class RouteSerializer < ActiveModel::Serializer
     object.trips if instance_options[:include_trips]
   end
 
-  # def api_path
-  #   "/agencies/#{agency_id}/routes/#{object.id}"
-  # end
-
   def agency_id
     scope.params[:agency_id]
   end
