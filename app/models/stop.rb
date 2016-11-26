@@ -1,3 +1,4 @@
+# class Stop
 class Stop < ApplicationRecord
   self.primary_key = :id
   has_many :stop_times

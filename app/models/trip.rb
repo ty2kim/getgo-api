@@ -1,3 +1,4 @@
+# class Trip
 class Trip < ApplicationRecord
   self.primary_key = :id
   belongs_to :route

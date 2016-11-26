@@ -3,10 +3,6 @@ class StopTimeSerializer < ActiveModel::Serializer
   attributes :id, :trip_id, :stop_id, :arrival_time, :departure_time,
   :stop_sequence, :pickup_type, :drop_off_type
 
-  # def api_path
-  #   "/agencies/#{agency_id}/routes/#{route_id}/trips/#{trip_id}/stop_times/#{object.id}"
-  # end
-
   private
 
   def agency_id

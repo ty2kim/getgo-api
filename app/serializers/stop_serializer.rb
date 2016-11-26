@@ -10,22 +10,4 @@ class StopSerializer < ActiveModel::Serializer
   def trips
     object.trips if instance_options[:include_trips]
   end
-
-  # def api_path
-  #   "/agencies/#{agency_id}/routes/#{route_id}/trips/#{trip_id}/stops/#{object.id}"
-  # end
-
-  private
-
-  def agency_id
-    scope.params[:agency_id]
-  end
-
-  def route_id
-    scope.params[:route_id]
-  end
-
-  def trip_id
-    scope.params[:trip_id]
-  end
 end

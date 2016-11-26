@@ -6,8 +6,4 @@ class RouteSerializer < ActiveModel::Serializer
   def trips
     object.trips if instance_options[:include_trips]
   end
-
-  def agency_id
-    scope.params[:agency_id]
-  end
 end
